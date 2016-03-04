@@ -23,7 +23,7 @@ public class JumpyLoopingHiker {
         for(int trailIteration = 1; trailIteration <= trailSize; trailIteration++){
             for(int obstacleIteration = trailIteration; obstacleIteration <= trailSize; obstacleIteration += trailIteration){
                 // Minus one as the index is 0 based and the iterations are 1 based
-                trail.manageObstacle(obstacleIteration-1);
+                trail.interactWithObstacleAt(obstacleIteration - 1);
             }
         }
         return trail;

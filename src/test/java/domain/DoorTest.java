@@ -20,7 +20,7 @@ public class DoorTest {
     public void testToogle() throws Exception {
         Door.Status expected = Door.Status.OPENED;
         Door toggledDoor = new Door();
-        toggledDoor.toggle();
+        toggledDoor.interact();
         Door.Status actual = toggledDoor.getStatus();
         assertEquals(expected, actual);
     }

@@ -4,24 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The trail is a collection of obstacles.
+ * The trail is a collection of interactable instances.
  */
-public class Trail {
+public class Trail<E extends Interactable> {
 
-    // TODO : The Door type can be generic
-    private List<Door> obstacles;
+    private List<E> obstacles;
 
-    Trail (int size){
-        obstacles = new ArrayList<Door>(size);
-        for (Door o:obstacles){
-            o = new Door();
+    Trail (Class<E> obstacleType, int size) throws InstantiationException,IllegalAccessException{
+        obstacles = new ArrayList<E>(size);
+        for (E o:obstacles){
+            o = obstacleType.newInstance();
         }
     }
 
-    // TODO : The toggle method can be encapsulated through a generic interface with single method manageObstacle()
-    public void manageObstacle(int index){
+    public void interactWithObstacleAt(int index){
         assert index <= obstacles.size();
-        obstacles.get(index).toggle();
+        obstacles.get(index).interact();
     }
 
     public int getSize(){
